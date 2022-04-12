@@ -17,7 +17,7 @@ go mod init web_app
 go mod tidy
 ```
 
-## 二、Viper
+## 二、引入Viper
 
 ```go
 	viper.SetConfigFile("config.yaml") // 指定配置文件路径
@@ -40,11 +40,11 @@ go mod tidy
 
 https://www.liwenzhou.com/posts/Go/viper_tutorial/  Go语言配置管理神器——Viper中文教程
 
-## 三、zap日志库
+## 三、引入zap日志库
 
 https://www.liwenzhou.com/posts/Go/use_zap_in_gin/  使用zap接收gin框架默认的日志并配置日志归档
 
-## 四、Mysql
+## 四、引入Mysql
 
 ```go
 package mysql
@@ -92,3 +92,55 @@ func Init() (err error) {
 	return
 }
 ```
+
+## 五、引入redis
+
+```go
+package redis
+
+import (
+	"fmt"
+
+	"github.com/go-redis/redis"
+	"github.com/spf13/viper"
+)
+
+// 声明一个全局的rdb变量
+var rdb *redis.Client
+
+// // 初始化连接
+// func initClient() (err error) {
+// 	rdb = redis.NewClient(&redis.Options{
+// 		Addr:     "localhost:6379",
+// 		Password: "", // no password set
+// 		DB:       0,  // use default DB
+// 	})
+
+// 	_, err = rdb.Ping().Result()
+// 	if err != nil {
+// 		return err
+// 	}
+// 	return nil
+// }
+
+// 初始化连接
+func Init() (err error) {
+	rdb = redis.NewClient(&redis.Options{
+		Addr: fmt.Sprintf("%s:%d",
+			viper.GetString("redis.host"),
+			viper.GetInt("redis.port"),
+		),
+		Password: viper.GetString("redis.password"), // no password set
+		DB:       viper.GetInt("redis.db"),          // use default DB
+		PoolSize: viper.GetInt("redis.pool_size"),
+	})
+
+	_, err = rdb.Ping().Result()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+```
+
+https://www.liwenzhou.com/posts/Go/go_redis/  Go语言操作Redis
