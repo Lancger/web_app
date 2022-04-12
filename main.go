@@ -48,12 +48,12 @@ func main() {
 
 	// 5、注册路由
 	// r := routes.Setup()
-	r := routes.Setup(gin.ReleaseMode)
+	r := routes.Setup(gin.DebugMode)
 
 	// 6、启动服务优雅关机
 	srv := &http.Server{
 		// Addr:    ":8080",
-		Addr:    fmt.Sprintf(":%d", viper.GetInt("app.port")),
+		Addr:    fmt.Sprintf(":%d", viper.GetInt("port")),
 		Handler: r,
 	}
 

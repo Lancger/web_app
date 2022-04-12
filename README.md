@@ -235,12 +235,12 @@ func main() {
 
 	// 5、注册路由
 	// r := routes.Setup()
-	r := routes.Setup(gin.ReleaseMode)
+	r := routes.Setup(gin.DebugMode)
 
 	// 6、启动服务优雅关机
 	srv := &http.Server{
 		// Addr:    ":8080",
-		Addr:    fmt.Sprintf(":%d", viper.GetInt("app.port")),
+		Addr:    fmt.Sprintf(":%d", viper.GetInt("port")),
 		Handler: r,
 	}
 
@@ -277,3 +277,17 @@ func main() {
 ```
 
 https://www.liwenzhou.com/posts/Go/graceful_shutdown/  优雅地关机或重启
+
+## 七、运行测试
+
+```go
+➜  web_app git:(main) ✗ go run main.go
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:   export GIN_MODE=release
+ - using code:  gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /version                  --> wep_app/routes.Setup.func1 (3 handlers)
+
+➜  ~ curl "http://127.0.0.1:8080/version"
+v0.1.4
+```
