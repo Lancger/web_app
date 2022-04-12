@@ -2,7 +2,7 @@
 
 ## 一、初始化项目
 
-```bash
+```go
 #项目启用 Go Modules
 mkdir web_app && cd web_app
 
@@ -16,3 +16,11 @@ go mod init web_app
 #下载项目依赖包
 go mod tidy
 ```
+
+## 二、Viper
+
+```go
+
+```
+
+https://www.liwenzhou.com/posts/Go/viper_tutorial/
