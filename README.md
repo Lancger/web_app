@@ -38,10 +38,12 @@ go mod tidy
 	return
 ```
 
-https://www.liwenzhou.com/posts/Go/viper_tutorial/
+https://www.liwenzhou.com/posts/Go/viper_tutorial/  Go语言配置管理神器——Viper中文教程
 
 ## 三、zap日志库
 
 ```go
 
 ```
+
+https://www.liwenzhou.com/posts/Go/use_zap_in_gin/  使用zap接收gin框架默认的日志并配置日志归档
