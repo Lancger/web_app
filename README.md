@@ -291,3 +291,9 @@ https://www.liwenzhou.com/posts/Go/graceful_shutdown/  优雅地关机或重启
 ➜  ~ curl "http://127.0.0.1:8080/version"
 v0.1.4
 ```
+
+## 八、优化，连接关闭
+
+```go
+
+```
