@@ -33,18 +33,24 @@ func main() {
 		fmt.Printf("init logger failed, err:%v\n", err)
 		return
 	}
+	// 缓存区的日志追加到日志中
+	defer zap.L().Sync()
 
 	// 3、初始化MySQL连接
 	if err := mysql.Init(); err != nil {
 		fmt.Printf("init mysql failed, err:%v\n", err)
 		return
 	}
+	// mysql连接释放
+	defer mysql.Close()
 
 	// 4、初始化Redis连接
 	if err := redis.Init(); err != nil {
 		fmt.Printf("init redis failed, err:%v\n", err)
 		return
 	}
+	// redis连接释放
+	defer redis.Close()
 
 	// 5、注册路由
 	// r := routes.Setup()

@@ -43,3 +43,8 @@ func Init() (err error) {
 	}
 	return nil
 }
+
+// rdb小写实例，没有对外暴露，这里可以通过封装一个对外的方法用于关闭释放redis连接
+func Close() {
+	_ = rdb.Close()
+}

@@ -42,3 +42,8 @@ func Init() (err error) {
 	db.SetMaxIdleConns(viper.GetInt("mysql.max_idle_conns"))
 	return
 }
+
+// db小写实例，没有对外暴露，这里可以通过封装一个对外的方法用于关闭释放mysql连接
+func Close() {
+	_ = db.Close()
+}
