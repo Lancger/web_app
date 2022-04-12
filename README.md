@@ -5,9 +5,7 @@
 ```go
 #项目启用 Go Modules
 mkdir web_app && cd web_app
-
 go env -w GO111MODULE=on
-
 go env -w GOPROXY=https://goproxy.cn,direct
 
 #初始化项目go.mod文件
