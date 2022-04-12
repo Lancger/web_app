@@ -1,6 +1,6 @@
 # gin web脚手架
 
-# 一、初始化项目
+## 一、初始化项目
 
 ```bash
 #项目启用 Go Modules
